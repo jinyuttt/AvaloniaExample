@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Video_Avalonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Video_Avalonia.Views.MainWindow"
+        xmlns:uc="clr-namespace:AForgeNet.AvaloniaVideo;assembly=AForgeNet.AvaloniaVideo"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Video_Avalonia">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+  <Grid RowDefinitions="200,*"  ColumnDefinitions="200,200,200,200,*">
+    <ComboBox Name="VideolistBox" Width="120" Grid.Row="0" Grid.Column="0"/>
+    <ComboBox Name="cbo_rate" Width="120" Grid.Row="0" Grid.Column="1"/>
+    <Button Name="buttonStart" Content="开启" Click="Button_Click" Width="120" Grid.Row="0" Grid.Column="2"/>
+    <Button Name="buttonStop" Content="关闭" Click="Button_Click_1" Width="120" Grid.Row="0" Grid.Column="3"/>
+    <uc:VideoPlayer Name = "VideoSourcePlayer"  Grid.Row="1" Grid.ColumnSpan="4"/>
+  </Grid>
+
+
+</Window>

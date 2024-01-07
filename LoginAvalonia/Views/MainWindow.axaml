@@ -1,0 +1,113 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:LoginAvalonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="LoginAvalonia.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/users2.png"
+         Width="430"
+        Height="340"
+        CanResize="False" 
+        WindowStartupLocation="CenterScreen"
+        Title="LoginAvalonia">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+  <Window.Styles >
+    <Style Selector="TextBox.tb1">
+      <Setter Property="Margin" Value="0,-40,0,0"/>
+      <Setter Property="Height" Value="26"/>
+      <Setter Property="Width" Value="250"/>
+      <Setter Property="Watermark" Value="账号"/>
+      <Setter Property="BorderBrush" Value="#80c0ff"/>
+    </Style>
+    <Style Selector="TextBox.tb2">
+      <Setter Property="Margin" Value="0,35,0,0"/>
+      <Setter Property="Height" Value="26"/>
+      <Setter Property="Width" Value="250"/>
+      <Setter Property="Watermark" Value="密码"/>
+      <Setter Property="BorderBrush" Value="#80c0ff"/>
+      <Setter Property="PasswordChar" Value="*"/>
+    </Style>
+    <!--######<TextBox标签>######-->
+
+
+    <Style Selector="Image.img1">
+      <Setter Property="Margin" Value="0,-250,0,0"/>
+      <Setter Property="Width" Value="430"/>
+    </Style>
+    <Style Selector="Image.img2">
+      <Setter Property="Margin" Value="0,-190,0,0"/>
+      <Setter Property="Width" Value="73"/>
+      <Setter Property="Height" Value="73"/>
+    </Style>
+    <!--######<Image标签>######-->
+
+
+    <Style Selector="TextBlock.tbk1">
+      <Setter Property="Margin" Value="5,5,0,0"/>
+      <Setter Property="Foreground" Value="White"/>
+    </Style>
+    <Style Selector="TextBlock.tbk2">
+      <Setter Property="Margin" Value="292,213,0,0"/>
+      <Setter Property="Foreground" Value="#0c7ab9"/>
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="TextBlock.tbk3">
+      <Setter Property="Margin" Value="275,305,0,0"/>
+      <Setter Property="Foreground" Value="#696969"/>
+    </Style>
+    <!--######<TextBlock标签>######-->
+
+
+
+    <Style Selector="Button.bt1">
+      <Setter Property="Margin" Value="100,195,0,0"/>
+      <Setter Property="Width" Value="250"/>
+      <Setter Property="Height" Value="40"/>
+      <Setter Property="Background" Value="#407cff"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="17"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <!--######<Button标签>######-->
+
+
+    <Style Selector="CheckBox.cbx1">
+      <Setter Property="Margin" Value="89,105,0,0" />
+      <Setter Property="BorderBrush" Value="#3c9fc5"/>
+    </Style>
+    <Style Selector="CheckBox.cbx2">
+      <Setter Property="Margin" Value="190,105,0,0"/>
+      <Setter Property="BorderBrush" Value="#3c9fc5"/>
+    </Style>
+    <!--######<CheckBox标签>######-->
+  </Window.Styles>
+  <StackPanel>
+    <Border Background="White"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            Padding="0"
+            Width="430"
+            Height="340">
+      <Grid>
+        <Image Classes="img1" Source="avares://LoginAvalonia/Assets/image_sign.png" ></Image>
+        <Image Classes="img2" Source="avares://LoginAvalonia/Assets/8.png" />
+        <TextBlock Classes="tbk1">GGTalk 2020</TextBlock>
+        <TextBlock Classes="tbk2">注册登录</TextBlock>
+        <TextBlock Classes="tbk3">企业即时通讯系统</TextBlock>
+        <TextBox Classes="tb1"/>
+        <TextBox Classes="tb2"/>
+        <CheckBox Classes="cbx2" >自动登录</CheckBox>
+        <CheckBox Classes="cbx1" >记住密码</CheckBox>
+        <Button Classes="bt1" >登录</Button>
+      </Grid>
+    </Border>
+  </StackPanel>
+</Window>

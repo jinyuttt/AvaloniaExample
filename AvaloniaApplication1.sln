@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapsuiAvalonia", "MapsuiAvalonia\MapsuiAvalonia.csproj", "{F108B912-9CE3-4195-81DD-FDD75E59ADAF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CefAvalonia", "CefAvalonia\CefAvalonia.csproj", "{20841212-D834-42B9-9CDD-FED89838C8A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoAvalonia", "Video Avalonia\VideoAvalonia.csproj", "{F2EAEFE0-B96D-40D2-8327-CB062527B557}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerAvalonia", "PlayerAvalonia\PlayerAvalonia.csproj", "{27A9AD6E-DE4B-435C-85E3-2A45B9DF8A15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibMpvAvalonia", "LibMpvAvalonia\LibMpvAvalonia.csproj", "{63DC6160-ADDE-435B-985F-F5B428075F25}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OxyPlotAvalonia", "OxyPlotAvalonia\OxyPlotAvalonia.csproj", "{7C260031-354B-4F03-B297-517B3A49CF8A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginAvalonia", "LoginAvalonia\LoginAvalonia.csproj", "{6AC532B7-F6F4-428E-A8DC-7780CE088D5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F108B912-9CE3-4195-81DD-FDD75E59ADAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F108B912-9CE3-4195-81DD-FDD75E59ADAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F108B912-9CE3-4195-81DD-FDD75E59ADAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F108B912-9CE3-4195-81DD-FDD75E59ADAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20841212-D834-42B9-9CDD-FED89838C8A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20841212-D834-42B9-9CDD-FED89838C8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20841212-D834-42B9-9CDD-FED89838C8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20841212-D834-42B9-9CDD-FED89838C8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2EAEFE0-B96D-40D2-8327-CB062527B557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2EAEFE0-B96D-40D2-8327-CB062527B557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2EAEFE0-B96D-40D2-8327-CB062527B557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2EAEFE0-B96D-40D2-8327-CB062527B557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27A9AD6E-DE4B-435C-85E3-2A45B9DF8A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A9AD6E-DE4B-435C-85E3-2A45B9DF8A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A9AD6E-DE4B-435C-85E3-2A45B9DF8A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A9AD6E-DE4B-435C-85E3-2A45B9DF8A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63DC6160-ADDE-435B-985F-F5B428075F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63DC6160-ADDE-435B-985F-F5B428075F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63DC6160-ADDE-435B-985F-F5B428075F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63DC6160-ADDE-435B-985F-F5B428075F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C260031-354B-4F03-B297-517B3A49CF8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C260031-354B-4F03-B297-517B3A49CF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C260031-354B-4F03-B297-517B3A49CF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C260031-354B-4F03-B297-517B3A49CF8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AC532B7-F6F4-428E-A8DC-7780CE088D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AC532B7-F6F4-428E-A8DC-7780CE088D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AC532B7-F6F4-428E-A8DC-7780CE088D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC532B7-F6F4-428E-A8DC-7780CE088D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3467285E-0A82-4F4D-89CE-751AF38512BE}
+	EndGlobalSection
+EndGlobal
