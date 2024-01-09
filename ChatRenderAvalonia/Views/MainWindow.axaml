@@ -1,0 +1,42 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ChatRenderAvalonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ChatRenderAvalonia.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ChatRenderAvalonia">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock x:Name="chatBoxWpf" Grid.Row="0" />
+    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="30,10">
+      <RadioButton Content="我说" IsChecked="True"  Checked="RadioButton_Checked"/>
+      <RadioButton Content="对方说" Margin="30,0,0,0" Checked="RadioButton_Checked"/>
+    </StackPanel>
+    <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal" Margin="30,10">
+      <Button Content="文字表情" Padding="7" x:Name="buttonText" Click="buttonText_Click"/>
+      <Button Content="图片" Margin="20,0,0,0" Padding="7" x:Name="buttonImage" Click="buttonImage_Click"/>
+      <Button Content="gif动图" Margin="20,0,0,0" Padding="7" x:Name="buttonGif" Click="buttonGif_Click"/>
+      <Button Content="名片" Margin="20,0,0,0" Padding="7" x:Name="buttonCard" Click="buttonCard_Click"/>
+      <Button Content="文件" Margin="20,0,0,0" Padding="7" x:Name="buttonFile" Click="buttonFile_Click"/>
+      <Button Content="语音" Margin="20,0,0,0" Padding="7" x:Name="buttonVoice" Click="buttonVoice_Click"/>
+      <Button Content="视频通话" Margin="20,0,0,0" Padding="7" x:Name="buttonVideoCall" Click="buttonCall_Click"/>
+      <Button Content="语音通话" Margin="20,0,0,0" Padding="7" x:Name="buttonAudioCall" Click="buttonCall_Click"/>
+      <Button Content="引用" Margin="20,0,0,0" Padding="7" x:Name="buttonQuote" Click="buttonQuote_Click"/>
+      <Button Content="自定义" Margin="20,0,0,0" Padding="7" x:Name="buttonCustomize" Click="buttonCustomize_Click"/>
+    </StackPanel>
+  </Grid>
+
+</Window>

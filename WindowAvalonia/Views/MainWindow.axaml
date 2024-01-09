@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:WindowAvalonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="WindowAvalonia.Views.MainWindow"
+          xmlns:titlebars="clr-namespace:CustomTitleBarTemplate.Views.CustomTitleBars;assembly=WindowAvalonia"
+        x:DataType="vm:MainWindowViewModel"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        
+ExtendClientAreaChromeHints="NoChrome"
+ExtendClientAreaTitleBarHeightHint="-1"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="WindowAvalonia">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+  <NativeMenu.Menu>
+    <NativeMenu>
+      <NativeMenuItem Header="File">
+        <NativeMenuItem.Menu>
+          <NativeMenu>
+            <NativeMenuItem Header="Open"/>
+            <NativeMenuItem Header="Recent">
+              <NativeMenuItem.Menu>
+                <NativeMenu/>
+              </NativeMenuItem.Menu>
+            </NativeMenuItem>
+            <NativeMenuItem Header="Quit Avalonia"
+                            Gesture="CTRL+Q"
+                            Command="{Binding QuitProgramCommand}"/>
+          </NativeMenu>
+        </NativeMenuItem.Menu>
+      </NativeMenuItem>
+      <NativeMenuItem Header="Edit">
+        <NativeMenuItem.Menu>
+          <NativeMenu>
+            <NativeMenuItem Header="Copy"/>
+            <NativeMenuItem Header="Paste"/>
+          </NativeMenu>
+        </NativeMenuItem.Menu>
+      </NativeMenuItem>
+    </NativeMenu>
+  </NativeMenu.Menu>
+
+  <Window.KeyBindings>
+    <KeyBinding Gesture="CTRL+Q"
+                Command="{Binding QuitProgramCommand}"></KeyBinding>
+  </Window.KeyBindings>
+  
+  <DockPanel HorizontalAlignment="Stretch"
+           VerticalAlignment="Stretch"
+           Name="ContentWrapper">
+    
+    <titlebars:WindowsTitleBar IsSeamless="True"  Name="titleBar"    Background="rgb(67,142,219)"></titlebars:WindowsTitleBar>
+   
+    <DockPanel Background="Transparent">
+      <StackPanel HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Spacing="10">
+        <ToggleButton Name="DarkThemeToggleButton"
+                      HorizontalAlignment="Center"
+                      Content="Dark Theme"></ToggleButton>
+      </StackPanel>
+
+    </DockPanel>
+  </DockPanel>
+
+</Window>

@@ -1,0 +1,134 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+  <Style Selector="Window">
+    <Setter Property="FontFamily"  Value="微软雅黑"/>
+    <Setter Property="BorderBrush" Value="Red"/>
+   
+  </Style>
+ 
+  <Style Selector="Button">
+    <Setter Property="CornerRadius" Value="4,4,4,4"/>
+    <Setter Property="Background" Value="#FFFFFF"/>
+  
+  </Style>
+  <Style Selector="Button:pointerover">
+    <Setter Property="BorderBrush" Value="rgb(198,226,255)"/>
+    <Setter Property="Background" Value="rgb(236,245,255)"/>
+    <Setter Property="Foreground" Value="rgb(64,158,255)"/>
+  </Style>
+  <Style Selector="Button[IsPressed=true]">
+    <Setter Property="BorderBrush" Value="rgb(58,142,230)"/>
+  </Style>
+
+  <Style Selector="Button.primary">
+    <Setter Property="BorderBrush" Value="rgb(64,158,255)"/>
+    <Setter Property="Background" Value="rgb(64,158,255)"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="CornerRadius" Value=" 4,4,4,4"/>
+  </Style>
+
+  <Style Selector="Button.primary:pointerover">
+    <Setter Property="BorderBrush" Value="rgb(102,177,255)"/>
+    <Setter Property="Background" Value="rgb(102,177,255)"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    
+  </Style>
+  <Style Selector="Button.primary[IsPressed=true]">
+    <Setter Property="BorderBrush" Value="rgb(58,142,230)"/>
+    <Setter Property="Background" Value="rgb(58,142,230)"/> 
+  </Style>
+
+  <Style Selector="Button.success">
+    <Setter Property="BorderBrush" Value="rgb(103,194,58)"/>
+    <Setter Property="Background" Value="rgb(103,194,58)"/>
+    <Setter Property="CornerRadius" Value="4,4,4,4"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+  </Style>
+  <Style Selector=" Button.success:pointerover">
+    <Setter Property="BorderBrush" Value="rgb(133,206,97)"/>
+    <Setter Property="Background" Value="rgb(133,206,97)"/>
+ 
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+  </Style>
+
+  <Style Selector="Button.success:pressed">
+    <Setter Property="BorderBrush" Value="rgb(93,175,52)"/>
+    <Setter Property="Background" Value="rgb(93,175,52)"/>
+
+  </Style>
+  <Style Selector=" Button.danger">
+    <Setter Property="BorderBrush" Value="rgb(103,194,58)"/>
+    <Setter Property="Background" Value="rgb(103,194,58)"/>
+    <Setter Property="CornerRadius" Value="4,4,4,4"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+  </Style>
+
+  <Style Selector="Button.danger:pointerover">
+    <Setter Property="BorderBrush" Value="rgb(247,137,137)"/>
+    <Setter Property="Background" Value="rgb(247,137,137)"/>
+   
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+  </Style>
+
+  <Style Selector="  Button.danger[IsPressed=true]">
+    <Setter Property="BorderBrush" Value="rgb(221,97,97)"/>
+    <Setter Property="Background" Value="rgb(221,97,97)"/>
+  </Style>
+
+  <Style Selector="TextBox">
+    <Setter Property="Background" Value="#fff"/>
+    <Setter Property="BorderBrush" Value="#DCDFE6"/>
+    <Setter Property="CornerRadius" Value="4,4,4,4"/>
+    <Setter Property="BorderThickness" Value="1"/>
+  </Style>
+  <Style Selector="DatePicker">
+    <Setter Property="Background" Value="#fff"/>
+    <Setter Property="BorderBrush" Value="#DCDFE6"/>
+    <Setter Property="CornerRadius" Value="4,4,4,4"/>
+    <Setter Property="BorderThickness" Value="1"/>
+  </Style>
+  <Style Selector="TextBlock">
+    <Setter Property="Background" Value="#fff"/>
+    <Setter Property="Padding" Value="4,4,4,4"/>
+  </Style>
+  <Style Selector="TextBox[IsKeyboardFocusWithin=true]">
+    <Setter Property="BorderBrush" Value="#1E9FFF"/>
+  </Style>
+
+  <Style Selector="TextBlock.ShowText">
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Foreground" Value="#FF333333"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="Margin" Value="8,0,15,0"/>
+    <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+  </Style>
+  <Style Selector="TextBlock.Label">
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Foreground" Value="#FF999999"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  
+  
+ 
+  <Style Selector="RadioButton#radioButtonBorder">
+
+    <Setter Property="BorderBrush" Value="rgb(220,223,230)"/>
+
+  </Style>
+
+  <Style Selector="RadioButton[IsChecked=true] #radioButtonBorder">
+
+    
+    
+  </Style>
+
+ 
+
+</Styles>
