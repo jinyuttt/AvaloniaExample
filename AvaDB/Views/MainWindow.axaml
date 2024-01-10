@@ -1,0 +1,135 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaDB.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaDB.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        xmlns:titlebars="clr-namespace:ChatRender.Avalonia;assembly=ChatRender.Avalonia"
+        Icon="/Assets/avalonia-logo.ico"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        Title="AvaDB">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+  <NativeMenu.Menu>
+    <NativeMenu>
+      <NativeMenuItem Header="File">
+        <NativeMenuItem.Menu>
+          <NativeMenu>
+            <NativeMenuItem Header="Open"/>
+            <NativeMenuItem Header="Recent">
+              <NativeMenuItem.Menu>
+                <NativeMenu/>
+              </NativeMenuItem.Menu>
+            </NativeMenuItem>
+            <NativeMenuItem Header="Quit Avalonia"
+                            Gesture="CTRL+Q"
+                            Command="{Binding QuitProgramCommand}"/>
+          </NativeMenu>
+        </NativeMenuItem.Menu>
+      </NativeMenuItem>
+      <NativeMenuItem Header="Edit">
+        <NativeMenuItem.Menu>
+          <NativeMenu>
+            <NativeMenuItem Header="Copy"/>
+            <NativeMenuItem Header="Paste"/>
+          </NativeMenu>
+        </NativeMenuItem.Menu>
+      </NativeMenuItem>
+    </NativeMenu>
+  </NativeMenu.Menu>
+
+  <Window.KeyBindings>
+    <KeyBinding Gesture="CTRL+Q"
+                Command="{Binding QuitProgramCommand}"></KeyBinding>
+  </Window.KeyBindings>
+
+  <DockPanel HorizontalAlignment="Stretch"
+           VerticalAlignment="Stretch"
+           Name="ContentWrapper">
+
+    <titlebars:WindowsTitleBar  DockPanel.Dock="Top" IsSeamless="True"  Name="titleBar"    Background="rgb(30,159,255)" BorderBrush="rgb(196,230,255)"> </titlebars:WindowsTitleBar>
+
+    <DockPanel Background="Transparent"  >
+      <StackPanel HorizontalAlignment="Stretch"
+                  VerticalAlignment="Top"
+                  Orientation="Horizontal"
+                  Background="LightGray"
+                  DockPanel.Dock="Top"
+                  Spacing="1">
+        <SplitButton Content="连接"  >
+          <SplitButton.Flyout>
+            <MenuFlyout Placement="Bottom">
+              <MenuItem Header="MySQL">
+              </MenuItem>
+              <MenuItem Header="PostgreSql"/>
+                       
+              <MenuItem Header="Oracle" />
+              <MenuItem Header="MariaDB" />
+              <MenuItem Header="Sqlite" />
+            </MenuFlyout>
+          </SplitButton.Flyout>
+          
+        </SplitButton>
+        <Button  Width="50"
+        Height="50"
+        HorizontalContentAlignment="Stretch"
+        VerticalContentAlignment="Stretch"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch" Content="新建查询">
+          <Image Stretch="None" Width="40" Height="40" Source="avares://AvaDB/Assets/1.png"/>
+            
+         
+        </Button>
+      </StackPanel>
+      <StackPanel DockPanel.Dock="Bottom" Background="LightGray">
+        <WrapPanel>
+          <TextBox Text="ww"  Background="LightGray"/>
+        </WrapPanel>
+      </StackPanel>
+      <Grid ColumnDefinitions="*, 2, *,2,300">
+        <TreeView Margin="10" Grid.Column="0"
+          ItemsSource="{Binding Nodes}"
+          SelectedItems="{Binding SelectedNodes}"
+          SelectionMode="Multiple">
+          <TreeView.ItemTemplate>
+            <TreeDataTemplate ItemsSource="{Binding SubNodes}">
+              <Border HorizontalAlignment="Left"
+                      BorderBrush="Gray" BorderThickness="1"
+                      CornerRadius="5" Padding="15 3">
+                <TextBlock Text="{Binding Title}" />
+              </Border>
+            </TreeDataTemplate>
+          </TreeView.ItemTemplate>
+        </TreeView>
+        <GridSplitter Grid.Column="1" Background="LightGray" ResizeDirection="Columns"/>
+        
+          <TabControl  Grid.Column="2">
+            <TabItem Header="Tab 1">
+              <TextBlock Margin="5">This is tab 1 content</TextBlock>
+            </TabItem>
+            <TabItem Header="Tab 2">
+              <TextBlock Margin="5">This is tab 2 content</TextBlock>
+            </TabItem>
+            <TabItem Header="Tab 3">
+              <TextBlock Margin="5">This is tab 3 content</TextBlock>
+            </TabItem>
+          </TabControl>
+       
+        <GridSplitter Grid.Column="3" Background="LightGray" ResizeDirection="Columns"/>
+        <TextBlock Grid.Column="4" Background="Transparent"/>
+      </Grid>
+      
+    </DockPanel>
+  </DockPanel>
+
+</Window>

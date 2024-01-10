@@ -1,20 +1,18 @@
-Ôªøusing Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.Shapes;
+using Avalonia;
 using Avalonia.Input;
-using Avalonia.Markup.Xaml;
 using Avalonia.Media;
-using System;
+using Avalonia.Markup.Xaml;
+using Path = Avalonia.Controls.Shapes.Path;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
-namespace CustomTitleBarTemplate.Views.CustomTitleBars
+namespace ChatRender.Avalonia
 {
     public partial class WindowsTitleBar : UserControl
     {
         private Button minimizeButton;
         private Button maximizeButton;
-        private Path maximizeIcon;
+        private  Path maximizeIcon;
         private ToolTip maximizeToolTip;
         private Button closeButton;
         private Image windowIcon;
@@ -29,7 +27,7 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
         AvaloniaProperty.Register<WindowsTitleBar, bool>(nameof(IsSeamless));
 
         /// <summary>
-        /// Á™óÂè£ÁßªÂä®
+        /// ¥∞ø⁄“∆∂Ø
         /// </summary>
         public event EventHandler<PointerPressedEventArgs> OnPointerMouseHander;
 
@@ -39,7 +37,7 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
             set
             {
                 SetValue(IsSeamlessProperty, value);
-                if (titleBarBackground != null && 
+                if (titleBarBackground != null &&
                     systemChromeTitle != null &&
                     seamlessMenuBar != null &&
                     defaultMenuBar != null)
@@ -78,17 +76,20 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
                 maximizeButton.Click += MaximizeWindow;
                 closeButton.Click += CloseWindow;
                 windowIcon.DoubleTapped += CloseWindow;
+           
 
                 titleBar = this.FindControl<DockPanel>("TitleBar");
                 titleBarBackground = this.FindControl<DockPanel>("TitleBarBackground");
                 systemChromeTitle = this.FindControl<TextBlock>("SystemChromeTitle");
                 seamlessMenuBar = this.FindControl<NativeMenuBar>("SeamlessMenuBar");
                 defaultMenuBar = this.FindControl<NativeMenuBar>("DefaultMenuBar");
-                
+
 
                 SubscribeToWindowState();
             }
         }
+
+      
 
         private void WindowsTitleBar_PointerPressed(object? sender, PointerPressedEventArgs e)
         {
@@ -103,15 +104,15 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
             }
         }
 
-       
 
-        private void CloseWindow(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+
+        private void CloseWindow(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
         {
             Window hostWindow = (Window)this.VisualRoot;
             hostWindow.Close();
         }
 
-        private void MaximizeWindow(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void MaximizeWindow(object sender, global::Avalonia.Interactivity.RoutedEventArgs e)
         {
             Window hostWindow = (Window)this.VisualRoot;
 
@@ -125,7 +126,7 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
             }
         }
 
-        private void MinimizeWindow(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void MinimizeWindow(object sender, global::Avalonia.Interactivity.RoutedEventArgs e)
         {
             Window hostWindow = (Window)this.VisualRoot;
             hostWindow.WindowState = WindowState.Minimized;
@@ -146,13 +147,13 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
                 if (s != WindowState.Maximized)
                 {
                     maximizeIcon.Data = Geometry.Parse("M2048 2048v-2048h-2048v2048h2048zM1843 1843h-1638v-1638h1638v1638z");
-                    hostWindow.Padding = new Thickness(0,0,0,0);
+                    hostWindow.Padding = new Thickness(0, 0, 0, 0);
                     maximizeToolTip.Content = "Maximize";
                 }
                 if (s == WindowState.Maximized)
                 {
                     maximizeIcon.Data = Geometry.Parse("M2048 1638h-410v410h-1638v-1638h410v-410h1638v1638zm-614-1024h-1229v1229h1229v-1229zm409-409h-1229v205h1024v1024h205v-1229z");
-                    hostWindow.Padding = new Thickness(7,7,7,7);
+                    hostWindow.Padding = new Thickness(7, 7, 7, 7);
                     maximizeToolTip.Content = "Restore Down";
 
                     // This should be a more universal approach in both cases, but I found it to be less reliable, when for example double-clicking the title bar.

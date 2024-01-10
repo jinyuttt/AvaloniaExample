@@ -5,13 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="WindowAvalonia.Views.MainWindow"
-          xmlns:titlebars="clr-namespace:CustomTitleBarTemplate.Views.CustomTitleBars;assembly=WindowAvalonia"
+        xmlns:titlebars="clr-namespace:CustomTitleBarTemplate.Views.CustomTitleBars;assembly=WindowAvalonia"
         x:DataType="vm:MainWindowViewModel"
         WindowStartupLocation="CenterScreen"
         ExtendClientAreaToDecorationsHint="True"
-        
-ExtendClientAreaChromeHints="NoChrome"
-ExtendClientAreaTitleBarHeightHint="-1"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
         Icon="/Assets/avalonia-logo.ico"
         Title="WindowAvalonia">
 
@@ -58,17 +57,38 @@ ExtendClientAreaTitleBarHeightHint="-1"
            VerticalAlignment="Stretch"
            Name="ContentWrapper">
     
-    <titlebars:WindowsTitleBar IsSeamless="True"  Name="titleBar"    Background="rgb(67,142,219)"></titlebars:WindowsTitleBar>
+    <titlebars:WindowsTitleBar DockPanel.Dock="Top" IsSeamless="True"  Name="titleBar"    Background="rgb(30,159,255)" BorderBrush="rgb(196,230,255)"> </titlebars:WindowsTitleBar>
    
     <DockPanel Background="Transparent">
-      <StackPanel HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
+      <StackPanel HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Orientation="Horizontal"
                   Spacing="10">
-        <ToggleButton Name="DarkThemeToggleButton"
-                      HorizontalAlignment="Center"
-                      Content="Dark Theme"></ToggleButton>
+       
+       
+        <SplitButton Content="连接">
+          <SplitButton.Flyout>
+            <MenuFlyout Placement="Bottom">
+              <MenuItem Header="项目1">
+                <MenuItem Header="子项1" />
+                <MenuItem Header="子项2" />
+                <MenuItem Header="子项3" />
+              </MenuItem>
+              <MenuItem Header="项目2"
+                        InputGesture="Ctrl+A" />
+              <MenuItem Header="项目3" />
+            </MenuFlyout>
+          </SplitButton.Flyout>
+        </SplitButton>
+        <Button Content="新建"></Button>
       </StackPanel>
-
+      <DockPanel>
+        <TreeView BorderBrush="Green">
+          
+        </TreeView>
+        <TabControl BorderBrush="Red"></TabControl>
+        <TextBlock Padding="10"></TextBlock>
+      </DockPanel>
     </DockPanel>
   </DockPanel>
 

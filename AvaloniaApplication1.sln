@@ -25,7 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScottPlot Avalonia", "Scott
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatRenderAvalonia", "ChatRenderAvalonia\ChatRenderAvalonia.csproj", "{80DFAADE-99FF-489F-A1CE-18EBE89DFB4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowAvalonia", "WindowAvalonia\WindowAvalonia.csproj", "{3107F4DD-B840-4DB5-923E-DDA48E4D1233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowAvalonia", "WindowAvalonia\WindowAvalonia.csproj", "{3107F4DD-B840-4DB5-923E-DDA48E4D1233}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatRender.Avalonia", "ChatRender.Avalonia\ChatRender.Avalonia.csproj", "{467429CF-5E64-46A9-9275-59BFC34C7A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaDB", "AvaDB\AvaDB.csproj", "{1D4995D3-0B3F-4D34-A95F-0388F621EBC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,14 @@ Global
 		{3107F4DD-B840-4DB5-923E-DDA48E4D1233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3107F4DD-B840-4DB5-923E-DDA48E4D1233}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3107F4DD-B840-4DB5-923E-DDA48E4D1233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{467429CF-5E64-46A9-9275-59BFC34C7A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{467429CF-5E64-46A9-9275-59BFC34C7A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{467429CF-5E64-46A9-9275-59BFC34C7A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{467429CF-5E64-46A9-9275-59BFC34C7A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4995D3-0B3F-4D34-A95F-0388F621EBC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4995D3-0B3F-4D34-A95F-0388F621EBC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4995D3-0B3F-4D34-A95F-0388F621EBC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4995D3-0B3F-4D34-A95F-0388F621EBC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
