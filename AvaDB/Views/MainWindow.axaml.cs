@@ -16,5 +16,13 @@ namespace AvaDB.Views
         {
             this.BeginMoveDrag(e);
         }
+
+        private void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var item = new TabItem() { Header = "无标题-查询" };
+            item.Content = new QueryPage();
+            tabQuery.Items.Add(item);
+            
+        }
     }
 }

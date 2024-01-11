@@ -7,6 +7,7 @@
         x:Class="AvaDB.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         xmlns:titlebars="clr-namespace:ChatRender.Avalonia;assembly=ChatRender.Avalonia"
+        xmlns:tabQurtyItem="clr-namespace:AvaDB.Views;assembly=AvaDB"
         Icon="/Assets/avalonia-logo.ico"
         WindowStartupLocation="CenterScreen"
         ExtendClientAreaToDecorationsHint="True"
@@ -82,10 +83,7 @@
         </SplitButton>
         <Button  Width="50"
         Height="50"
-        HorizontalContentAlignment="Stretch"
-        VerticalContentAlignment="Stretch"
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch" Content="新建查询">
+         Content="新建查询" Click="Button_Click"  >
           <Image Stretch="None" Width="40" Height="40" Source="avares://AvaDB/Assets/1.png"/>
             
          
@@ -93,10 +91,10 @@
       </StackPanel>
       <StackPanel DockPanel.Dock="Bottom" Background="LightGray">
         <WrapPanel>
-          <TextBox Text="ww"  Background="LightGray"/>
+          <TextBox Text="连接"  Background="LightGray"/>
         </WrapPanel>
       </StackPanel>
-      <Grid ColumnDefinitions="*, 2, *,2,300">
+      <Grid ColumnDefinitions="200, 2, *,2,300">
         <TreeView Margin="10" Grid.Column="0"
           ItemsSource="{Binding Nodes}"
           SelectedItems="{Binding SelectedNodes}"
@@ -113,16 +111,8 @@
         </TreeView>
         <GridSplitter Grid.Column="1" Background="LightGray" ResizeDirection="Columns"/>
         
-          <TabControl  Grid.Column="2">
-            <TabItem Header="Tab 1">
-              <TextBlock Margin="5">This is tab 1 content</TextBlock>
-            </TabItem>
-            <TabItem Header="Tab 2">
-              <TextBlock Margin="5">This is tab 2 content</TextBlock>
-            </TabItem>
-            <TabItem Header="Tab 3">
-              <TextBlock Margin="5">This is tab 3 content</TextBlock>
-            </TabItem>
+          <TabControl  Grid.Column="2" Name="tabQuery" Background="Transparent">
+           
           </TabControl>
        
         <GridSplitter Grid.Column="3" Background="LightGray" ResizeDirection="Columns"/>

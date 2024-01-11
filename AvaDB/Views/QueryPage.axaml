@@ -1,0 +1,16 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaDB.Views.QueryPage">
+
+  <DockPanel Background="Transparent">
+    <StackPanel   Orientation="Horizontal"  VerticalAlignment="Top" Background="LightGray">
+      <Button Content="保存"/>
+      <Button Content="美化SQL" />
+      <Button Content="代码段"/>
+    </StackPanel>
+    <TextBlock  />
+  </DockPanel>
+</UserControl>

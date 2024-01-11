@@ -1,0 +1,23 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+  <Style Selector="TabItem:selected">
+    <Setter Property="Background" Value="rgb(240,255,255)"/>
+    <Setter Property="BorderBrush" Value="Gray"/>
+  </Style>
+  <Style Selector="TabItem">
+    <Setter Property="FontSize" Value="10"/>
+    <Setter Property="FontFamily" Value="微软雅黑"/>
+    <Setter Property="Foreground" Value="Gray"/>
+  </Style>
+  <Style Selector="TabControl Button">
+    <Setter Property="Background" Value="LightBlue"/>
+    <Setter Property="BorderBrush" Value="SkyBlue"/>
+    <Setter Property="BorderThickness" Value="1"/>
+  </Style>
+</Styles>
