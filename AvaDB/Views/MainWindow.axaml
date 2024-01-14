@@ -18,7 +18,7 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        
     </Design.DataContext>
 
   <NativeMenu.Menu>
@@ -70,11 +70,9 @@
         <SplitButton Content="连接"  >
           <SplitButton.Flyout>
             <MenuFlyout Placement="Bottom">
-              <MenuItem Header="MySQL">
-              </MenuItem>
-              <MenuItem Header="PostgreSql"/>
-                       
-              <MenuItem Header="Oracle" />
+              <MenuItem Header="MySQL"  Click="OpenDB"/>
+              <MenuItem Header="PostgreSql" />        
+              <MenuItem Header="Oracle"  />
               <MenuItem Header="MariaDB" />
               <MenuItem Header="Sqlite" />
             </MenuFlyout>
@@ -96,8 +94,11 @@
       </StackPanel>
       <Grid ColumnDefinitions="200, 2, *,2,300">
         <TreeView Margin="10" Grid.Column="0"
+                  Name="treeView"
           ItemsSource="{Binding Nodes}"
           SelectedItems="{Binding SelectedNodes}"
+           DoubleTapped="TreeView_DoubleTapped"  
+           SelectionChanged="TreeView_SelectionChanged"
           SelectionMode="Multiple">
           <TreeView.ItemTemplate>
             <TreeDataTemplate ItemsSource="{Binding SubNodes}">

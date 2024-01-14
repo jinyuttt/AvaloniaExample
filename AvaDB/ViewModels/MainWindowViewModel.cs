@@ -11,9 +11,16 @@ namespace AvaDB.ViewModels
         public ObservableCollection<Node> Nodes { get; }
         public ObservableCollection<Node> SelectedNodes { get; }
         private Window hostWindow;
-        public ReactiveCommand<Unit, Unit> QuitProgramCommand { get; }
+         public ReactiveCommand<Unit, Unit> QuitProgramCommand { get; }
 
-        public MainWindowViewModel(Window _hostWindow)
+        public ReactiveCommand<Unit, Unit> OpenCommand { get; }
+        //public void QuitProgramCommand()
+        //{
+        //    hostWindow.Close();
+        //}
+        public ObservableCollection<MenuItem> DBSource { get; set; }
+
+        public MainWindowViewModel(Window _hostWindow )
         {
             hostWindow = _hostWindow;
 
@@ -33,6 +40,9 @@ namespace AvaDB.ViewModels
 
             var moth = Nodes.Last().SubNodes?.Last();
             if (moth != null) SelectedNodes.Add(moth);
+
+            // DBSource = new MenuItem[] { new() { Header="1" },new MenuItem {  Header="2"} };
+            DBSource = new ObservableCollection<MenuItem> { new() { Header = "1" } };
         }
     }
 }

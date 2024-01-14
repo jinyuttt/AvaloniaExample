@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
+          xmlns:vm="using:AvaDB.ViewModels"
+         x:Class="AvaDB.Views.Dialog"
+          x:DataType="vm:DBViewModel"
+         ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        Background="LightBlue"
+        Title="Dialog">
+
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:DBViewModel/>
+  </Design.DataContext>
+    <Grid RowDefinitions="40,*" ColumnDefinitions="*,100">
+      
+        <TextBlock Name="txttitle" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Height="30">标题</TextBlock>
+        <Button Grid.Row="0" HorizontalAlignment="Right" Grid.Column="1" Click="Close_OnClick" Name="Close" VerticalAlignment="Top">关闭</Button>
+      <StackPanel   Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+        <Grid    RowDefinitions="40,40,40,40,40,auto" ColumnDefinitions="100,500">
+          <Label Content="连接名称" Grid.Row="0" Grid.Column="0" Width="100" Height="20" />
+          <TextBox Name="txtName" Text="{Binding Name}" Grid.Row="0" Grid.Column="1" Width="400" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+          <Label Content="主机" Grid.Row="1" Grid.Column="0" Width="100" Height="20"/>
+          <TextBox Name="txtHost" Text="{Binding Host}" Grid.Row="1" Grid.Column="1" Width="400" Height="20" HorizontalAlignment="Left"/>
+          <Label Content="端口" Grid.Row="2" Grid.Column="0" Height="20" />
+          <TextBox Name="txtPort" Text="{Binding Port}" Grid.Row="2" Grid.Column="1" Width="300" Height="20" HorizontalAlignment="Left"/>
+          <Label Content="用户名" Grid.Row="3" Grid.Column="0"  Height="20"/>
+          <TextBox Name="txtUser" Text="{Binding User}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Height="20" Width="300"/>
+          <Label Content="密码" Grid.Row="4" Grid.Column="0"  Height="20"/>
+          <TextBox  Name="txtPsw" Text="{Binding Password}" Grid.Row="4" Grid.Column="1" Width="300" Height="20" HorizontalAlignment="Left"/>
+          <CheckBox Name="chk"  IsChecked="{Binding IsCheck}" Content="保存密码"  Grid.Row="5" Grid.Column="1"/>
+        </Grid>
+        <DockPanel Margin="10,5,0,0">
+          <Button Content="测试连接" Name="btnTest"  DockPanel.Dock="Left" Command="{Binding DBConnect}"/>
+          <Button Content="取消" Name="btnCancle"  Click="Button_Click_Cancle" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+          <Button Content="确定"  Name="btnOk" Click="Button_Click_OK" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+         
+        </DockPanel>
+       
+      </StackPanel>
+      
+      
+      </Grid>
+    
+   
+ 
+</Window>

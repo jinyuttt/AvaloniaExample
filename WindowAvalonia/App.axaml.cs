@@ -19,8 +19,9 @@ namespace WindowAvalonia
             {
                 desktop.MainWindow = new MainWindow
                 {
-                   // DataContext = new MainWindowViewModel(),
+                  //  DataContext = new MainWindowViewModel(this)
                 };
+                desktop.MainWindow.DataContext = new MainWindowViewModel(desktop.MainWindow);
             }
 
             base.OnFrameworkInitializationCompleted();
