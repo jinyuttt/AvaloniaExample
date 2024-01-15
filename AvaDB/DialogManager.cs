@@ -125,7 +125,7 @@ namespace AvaDB
             var titleBox = dialog.Find<TextBlock>("txttitle");
             
             titleBox.Text = "新建连接-" + content;
-            dialog.DBType = content;
+           
             dialog.Show();
         }
 

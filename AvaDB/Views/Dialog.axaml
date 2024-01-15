@@ -36,7 +36,7 @@
           <CheckBox Name="chk"  IsChecked="{Binding IsCheck}" Content="保存密码"  Grid.Row="5" Grid.Column="1"/>
         </Grid>
         <DockPanel Margin="10,5,0,0">
-          <Button Content="测试连接" Name="btnTest"  DockPanel.Dock="Left" Command="{Binding DBConnect}"/>
+          <Button Content="测试连接" Name="btnTest" Click="Button_Click_Test"  DockPanel.Dock="Left" />
           <Button Content="取消" Name="btnCancle"  Click="Button_Click_Cancle" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
           <Button Content="确定"  Name="btnOk" Click="Button_Click_OK" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
          

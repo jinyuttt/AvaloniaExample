@@ -56,13 +56,13 @@
     <None Update="DBPoolCfg\ParameterType.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="drivers\MySql.Data.dll">
+    <None Update="dbdrivers\MySql.Data.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="drivers\Npgsql.dll">
+    <None Update="dbdrivers\Npgsql.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="drivers\Oracle.ManagedDataAccess.dll">
+    <None Update="dbdrivers\Oracle.ManagedDataAccess.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
