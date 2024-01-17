@@ -1,0 +1,62 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+            xmlns:vm="using:AvaDB.ViewModels"
+            x:DataType="vm:DataTableModel"  
+            xmlns:tree="clr-namespace:Avalonia.Controls.TreeDataGrid;assembly=Avalonia.Controls.TreeDataGrid"
+             x:Class="AvaDB.QueryTable">
+  <Design.DataContext>
+  
+    <vm:DataTableModel/>
+  </Design.DataContext>
+  <UserControl.Styles>
+    <Style Selector="DataGrid">
+      <Setter Property="GridLinesVisibility" Value="None"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="BorderBrush" Value="Gray"/>
+      <!--网格线颜色-->
+      <Setter Property="CanUserResizeColumns" Value="false"/>
+      <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"></Setter>
+      <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"></Setter>
+      <Setter Property="HeadersVisibility" Value="Column"/>
+      <Setter Property="HorizontalGridLinesBrush">
+        <Setter.Value>
+          <SolidColorBrush Color="#03ffea"/>
+        </Setter.Value>
+      </Setter>
+      <Setter Property="VerticalGridLinesBrush">
+        <Setter.Value>
+          <SolidColorBrush Color="#03ffea"/>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style Selector="DataGridColumnHeader">
+      <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+      <Setter Property="Background" Value="#001f55"></Setter>
+      <Setter Property="Foreground" Value="#17acae"></Setter>
+      <Setter Property="BorderThickness" Value="1"></Setter>
+      <Setter Property="BorderBrush" Value="#03ffea"></Setter>
+    </Style>
+    <Style Selector="DataGridRow">
+      <Setter Property="Background" Value="#001f55" />
+      <Setter Property="Height" Value="35"/>
+      <Setter Property="Foreground" Value="#03ffea" />
+    </Style>
+
+  </UserControl.Styles>
+  <StackPanel>
+    <DataGrid Name="grdData" GridLinesVisibility="All"  Background="#001f55"
+          BorderThickness="1" BorderBrush="Gray"
+              AutoGenerateColumns="True"  >
+      
+   
+    </DataGrid>
+    <TreeDataGrid Name="treedata"   Background="#001f55"
+          BorderThickness="1" BorderBrush="Gray"  
+              >
+      
+    </TreeDataGrid>
+  </StackPanel>
+</UserControl>

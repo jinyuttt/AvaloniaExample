@@ -18,7 +18,7 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        
+      <vm:MainWindowViewModel/>
     </Design.DataContext>
 
   <NativeMenu.Menu>
@@ -99,13 +99,25 @@
           SelectedItems="{Binding SelectedNodes}"
            DoubleTapped="TreeView_DoubleTapped"  
            SelectionChanged="TreeView_SelectionChanged"
-          SelectionMode="Multiple">
+          SelectionMode="Single">
+          <TreeView.ItemContainerTheme>
+            <ControlTheme TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+              <Setter Property="IsExpanded" Value="True" />
+            </ControlTheme>
+          </TreeView.ItemContainerTheme>
           <TreeView.ItemTemplate>
             <TreeDataTemplate ItemsSource="{Binding SubNodes}">
               <Border HorizontalAlignment="Left"
                       BorderBrush="Gray" BorderThickness="1"
                       CornerRadius="5" Padding="15 3">
-                <TextBlock Text="{Binding Title}" />
+                <TextBlock Text="{Binding Title}" >
+                  <TextBlock.ContextMenu>
+                  <ContextMenu IsVisible="{Binding ContextMenuIsVisiblity}">
+                    <MenuItem Header="设计表" Click="MenuItem_Click_Table"/>
+                    <MenuItem Header="打开表"/>
+                  </ContextMenu>
+                  </TextBlock.ContextMenu>
+                </TextBlock>
               </Border>
             </TreeDataTemplate>
           </TreeView.ItemTemplate>

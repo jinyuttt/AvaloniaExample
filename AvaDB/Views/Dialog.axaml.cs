@@ -25,12 +25,26 @@ namespace AvaDB.Views
 #if DEBUG
             this.AttachDevTools();
 #endif
-           if (DBType =="Mysql")
-            {
-                txtPort.Text = "3306";
-            }
+            this.Loaded += Dialog_Loaded;
         }
 
+        private void Dialog_Loaded(object? sender, RoutedEventArgs e)
+        {
+            Init();
+        }
+
+        private  void Init()
+        {
+            if (DBType == "MySQL")
+            {
+                txtPort.Text = "3306";
+                txtHost.Text = "192.168.237.128";
+                txtName.Text = "mysql";
+                txtUser.Text = "jinyu";
+                txtPsw.Text = "";
+
+            }
+        }
         private HikariConfig GetConnect(string type)
         {
             DBViewModel viewModel = this.DataContext as DBViewModel;

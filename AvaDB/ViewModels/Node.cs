@@ -19,6 +19,11 @@ namespace AvaDB.ViewModels
 
         public IDbDataAdapter DataAdapter { get; set; } = null;
 
+        public bool ContextMenuIsVisiblity
+        {
+            get { return NodeType == NodeEnum.Table; }
+        }
+
         public NodeEnum NodeType { get; set; } = NodeEnum.Name;
         public string CfgPath { get; set; }
 

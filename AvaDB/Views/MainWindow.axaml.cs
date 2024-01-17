@@ -7,6 +7,10 @@ using Hikari;
 using MsBox.Avalonia.Enums;
 using MsBox.Avalonia;
 using System.Data;
+using System.Collections.ObjectModel;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using DynamicData;
+using System.Linq;
 
 namespace AvaDB.Views
 {
@@ -17,8 +21,15 @@ namespace AvaDB.Views
             InitializeComponent();
             this.
             titleBar.OnPointerMouseHander += TitleBar_OnPointerMouseHander; 
-            treeView.Items.Clear();
+          
+            this.Loaded += MainWindow_Loaded;
             
+        }
+
+        private void MainWindow_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            ObservableCollection<Node> nodes=  treeView.ItemsSource as ObservableCollection<Node>;
+            nodes.Clear();
         }
 
         private void TitleBar_OnPointerMouseHander(object? sender, PointerPressedEventArgs e)
@@ -122,6 +133,9 @@ namespace AvaDB.Views
                             sub.NodeType = NodeEnum.DB;
                             node.SubNodes.Add(sub);
                         }
+
+                        var tree = sender as TreeView;
+                       // treeView.ExpandSubTree((TreeViewItem)tree.SelectedItem);
                     }
                 }
                 else if(node.NodeType == NodeEnum.DB)
@@ -145,14 +159,68 @@ namespace AvaDB.Views
                             sub.NodeType=NodeEnum.Table;
                             node.SubNodes.Add(sub);
                         }
+                        var tree = sender as TreeView;
+                      //  treeView.ExpandSubTree((TreeViewItem)tree.SelectedItem);
                     }
+                }
+                else
+                {
+                    node.DataAdapter.SelectCommand = node.Connection.CreateCommand();
+                    node.DataAdapter.SelectCommand.CommandText = "select * from "+node.Title;
+                    var ds = new DataSet();
+                    node.DataAdapter.Fill(ds);
+                    QueryTable itemtable = new QueryTable();
+                    var table = new DataTableModel();
+                    itemtable.DataContext= table;
+                    itemtable.grdData.ItemsSource = ds.Tables[0].Rows;
+                   // table.Data.AddRange(ds.Tables[0].Rows.Cast<DataRow>());
+                    var tabItem = new TabItem() { Header =node.Title };
+                    tabItem.Content = itemtable;
+                    tabQuery.Items.Add(tabItem);
                 }
             }
         }
 
         private void TreeView_SelectionChanged(object? sender, Avalonia.Controls.SelectionChangedEventArgs e)
         {
-           var node= e.Source;
+          
+        }
+
+        private void MenuItem_Click_Table(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var menu = e.Source as MenuItem;
+            var node = menu.DataContext as Node;
+             
+            if (node.Properties.TryGetValue("tableinfo", out var query))
+            {
+                node.DataAdapter.SelectCommand = node.Connection.CreateCommand();
+                node.DataAdapter.SelectCommand.CommandText = query.Replace("{Table}",node.Title);
+                var ds = new DataSet();
+                node.DataAdapter.Fill(ds);
+
+                TableTailModel tailModel=new TableTailModel();
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    TableField field = new();
+                    field.Name = row["Field"].ToString();
+                    field.FieldType = row["Type"].ToString();
+                    field.IsNull = row["Null"].ToString()=="NO"?true:false;
+                    field.IsKey = row["Key"].ToString() == "PRI" ? true : false;
+                    if (field.FieldType.Contains("("))
+                    {
+                        int index = field.FieldType.IndexOf("(");
+                        string last = field.FieldType.Substring(index).Trim('(', ')');
+                        field.DataLen = last;
+                        field.FieldType = field.FieldType.Substring(0, index);
+                    }
+                    tailModel.TableNote.Add(field);
+                }
+                DesignTable designTable = new DesignTable();
+                designTable.DataContext = tailModel;
+                tabQuery.Items.Add(new TabItem() {  Content = designTable, Header="…Ëº∆"+node.Title });
+            //    var tree = sender as TreeView;
+                //  treeView.ExpandSubTree((TreeViewItem)tree.SelectedItem);
+            }
         }
     }
 }
