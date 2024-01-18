@@ -5,10 +5,11 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
             xmlns:vm="using:AvaDB.ViewModels"
             x:DataType="vm:DataTableModel"  
-            xmlns:tree="clr-namespace:Avalonia.Controls.TreeDataGrid;assembly=Avalonia.Controls.TreeDataGrid"
+            xmlns:tree="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.TreeDataGrid"
+             xmlns:row="clr-namespace:Avalonia.Controls.Primitives;assembly=Avalonia.Controls.TreeDataGrid"
              x:Class="AvaDB.QueryTable">
   <Design.DataContext>
-  
+    
     <vm:DataTableModel/>
   </Design.DataContext>
   <UserControl.Styles>
@@ -47,16 +48,10 @@
 
   </UserControl.Styles>
   <StackPanel>
-    <DataGrid Name="grdData" GridLinesVisibility="All"  Background="#001f55"
-          BorderThickness="1" BorderBrush="Gray"
-              AutoGenerateColumns="True"  >
+  
+    <tree:TreeDataGrid Name="treedata"   Background="White" 
+          BorderThickness="1" BorderBrush="Gray"  Source="{Binding Datas}"  >
       
-   
-    </DataGrid>
-    <TreeDataGrid Name="treedata"   Background="#001f55"
-          BorderThickness="1" BorderBrush="Gray"  
-              >
-      
-    </TreeDataGrid>
+    </tree:TreeDataGrid>
   </StackPanel>
 </UserControl>

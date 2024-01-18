@@ -172,11 +172,12 @@ namespace AvaDB.Views
                     QueryTable itemtable = new QueryTable();
                     var table = new DataTableModel();
                     itemtable.DataContext= table;
-                    itemtable.grdData.ItemsSource = ds.Tables[0].Rows;
+                    //itemtable.grdData.ItemsSource = ds.Tables[0].Rows;
                    // table.Data.AddRange(ds.Tables[0].Rows.Cast<DataRow>());
                     var tabItem = new TabItem() { Header =node.Title };
                     tabItem.Content = itemtable;
                     tabQuery.Items.Add(tabItem);
+                    itemtable.BindDataTable(ds.Tables[0]);
                 }
             }
         }
