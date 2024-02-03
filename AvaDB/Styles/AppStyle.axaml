@@ -20,4 +20,33 @@
     <Setter Property="BorderBrush" Value="SkyBlue"/>
     <Setter Property="BorderThickness" Value="1"/>
   </Style>
+<Style Selector="TabItem">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type TabItem}">
+            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                    Width="{TemplateBinding Width}"
+                    Height="{TemplateBinding Height}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="auto"></ColumnDefinition>
+                  <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="{TemplateBinding Header}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"></Label>
+                <Grid Grid.Column="1" Margin="5,0,0,0">
+                  <Button  Name="PART_TextPresenter"                   
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                           Content="X"
+                      />
+                </Grid>
+              </Grid>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
 </Styles>

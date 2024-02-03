@@ -6,12 +6,14 @@ namespace AvaDB.ViewModels
     {
         public ObservableCollection<TableField>? TableNote { get; set; }
 
-      
+        public OptTable Opt {  get; set; }
+
+      public string TableName { get; set; }
 
         public TableTailModel()
         {
             TableNote= new ObservableCollection<TableField>();
-            //FieldTypes = new ObservableCollection<string>() { "char", "double", "int", "json", "bigint" };
+          
         }
     }
 }

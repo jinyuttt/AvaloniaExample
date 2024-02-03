@@ -7,10 +7,10 @@ namespace AvaDB.ViewModels
     {
        // public ObservableCollection<DataRow> Table { get; set; }
 
-        public ObservableCollection<GridRow> Datas { get; set; }
+       
         public DataTableModel() { 
-          //  Table = new ObservableCollection<DataRow>();
-            Datas = new ObservableCollection<GridRow>();
+          
+           
         }
     }
 }

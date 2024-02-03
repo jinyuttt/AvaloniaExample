@@ -8,6 +8,14 @@
     {
         Name,
         DB,
-        Table
+        Table,
+        Tables,
+        Other,
+        Function,
+        Functions,
+        QurySql,
+        QurySqls,
+        View,
+        Views
     }
 }

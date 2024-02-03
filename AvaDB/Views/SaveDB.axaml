@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="100"
+        x:Class="AvaDB.SaveDB"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+         xmlns:vm="using:AvaDB.ViewModels"
+         x:DataType="vm:SaveDBModel"
+        Background="LightBlue"
+        Title="另存为">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:SaveDBModel/>
+    </Design.DataContext>
+  <DockPanel Margin="2,2,2,2">
+    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" >
+      <Label Content="表名："/>
+      <TextBox Width="400" Text="{Binding Name}"/>
+    </StackPanel>
+    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right"   VerticalAlignment="Stretch">
+      <Button Content="确定" Click="Button_Click"/>
+      <Button Content="取消" Click="Button_Click_1"/>
+    </StackPanel>
+  </DockPanel>
+ 
+</Window>

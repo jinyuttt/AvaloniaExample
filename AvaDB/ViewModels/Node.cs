@@ -23,12 +23,29 @@ namespace AvaDB.ViewModels
         {
             get { return NodeType == NodeEnum.Table; }
         }
+        public bool ConMenuIsVisiblity
+        {
+            get { return NodeType == NodeEnum.Name; }
+        }
+        public bool DBMenuIsVisiblity
+        {
+            get { return NodeType == NodeEnum.DB; }
+        }
+        public bool OtherMenuIsVisiblity
+        {
+            get { return NodeType == NodeEnum.Other; }
+        }
 
         public NodeEnum NodeType { get; set; } = NodeEnum.Name;
+
         public string CfgPath { get; set; }
 
         public Dictionary<string, string> Properties { get; set; }
 
+        public Node()
+        {
+            
+        }
         public Node(string title)
         {
             Title = title;

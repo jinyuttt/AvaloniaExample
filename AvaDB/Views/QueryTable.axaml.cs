@@ -19,10 +19,10 @@ public partial class QueryTable : UserControl
     {
         InitializeComponent();
     }
-    Expression<Func<GridRow, string>> getvalueexpression = customer => customer.CellValue;
-    Expression<Func<GridRow, string>> getnameexpression = customer => customer.Name;
-    Expression<Func<GridRow, string>> getcelltypeexpression = customer => customer.CellType;
-    Expression<Func<GridRow, int>> getidexpression = customer => customer.Id;
+    //Expression<Func<GridRow, string>> getvalueexpression = customer => customer.CellValue;
+    //Expression<Func<GridRow, string>> getnameexpression = customer => customer.Name;
+    //Expression<Func<GridRow, string>> getcelltypeexpression = customer => customer.CellType;
+    //Expression<Func<GridRow, int>> getidexpression = customer => customer.Id;
     public void BindDataTable(DataTable dt)
     {
 
@@ -42,9 +42,5 @@ public partial class QueryTable : UserControl
         return getexpression;
     }
 
-    //private Func<DataRow, T> GetFunc<T>(DataColumn col)
-    //{
-       
-
-    //}
+    
 }

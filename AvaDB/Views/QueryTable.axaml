@@ -50,7 +50,7 @@
   <StackPanel>
   
     <tree:TreeDataGrid Name="treedata"   Background="White" 
-          BorderThickness="1" BorderBrush="Gray"  Source="{Binding Datas}"  >
+          BorderThickness="1" BorderBrush="Gray"    >
       
     </tree:TreeDataGrid>
   </StackPanel>

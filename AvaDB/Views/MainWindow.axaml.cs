@@ -8,14 +8,16 @@ using MsBox.Avalonia.Enums;
 using MsBox.Avalonia;
 using System.Data;
 using System.Collections.ObjectModel;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.IO;
+using AvaDB.Tools;
 using DynamicData;
-using System.Linq;
 
 namespace AvaDB.Views
 {
     public partial class MainWindow : Window
     {
+        const string filejon = "dbnode.json";
+        const string mydir = "avadb";
         public MainWindow()
         {
             InitializeComponent();
@@ -26,10 +28,28 @@ namespace AvaDB.Views
             
         }
 
+        void load(ObservableCollection<Node> nodes)
+        {
+           string path= Path.Combine(Path.GetTempPath(),mydir, filejon); 
+           var vfg= Util.JsonFileDeserialize<ObservableCollection<Node>>(path);
+            if (vfg.Result!= null)
+            {
+                nodes.AddRange(vfg.Result);
+            }
+        }
+
+        void save(ObservableCollection<Node> nodes)
+        {
+            string path = Path.Combine(Path.GetTempPath(),mydir, filejon);
+             Util.JsonFileSerializeAsync<ObservableCollection<Node>>(nodes,path);
+           
+        }
+
         private void MainWindow_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             ObservableCollection<Node> nodes=  treeView.ItemsSource as ObservableCollection<Node>;
             nodes.Clear();
+            load(nodes);
         }
 
         private void TitleBar_OnPointerMouseHander(object? sender, PointerPressedEventArgs e)
@@ -74,6 +94,8 @@ namespace AvaDB.Views
                     node.Properties = dBView.Properties;
                     node.CfgPath = dBView.CfgPath;
                     model.Nodes.Add(node);
+                    save(model.Nodes);
+
                 }
             }
         }
@@ -90,7 +112,7 @@ namespace AvaDB.Views
                         Hikari.HikariConfig config=new Hikari.HikariConfig();
                         config.ConnectString=node.ConnectString;
                         config.LoadConfig(node.CfgPath);
-                        config.ConnectString= node.ConnectString;
+                       
                         HikariDataSource dataSource=new HikariDataSource(config);
                       
                         try
@@ -134,17 +156,54 @@ namespace AvaDB.Views
                             node.SubNodes.Add(sub);
                         }
 
-                        var tree = sender as TreeView;
-                       // treeView.ExpandSubTree((TreeViewItem)tree.SelectedItem);
+                       
                     }
                 }
                 else if(node.NodeType == NodeEnum.DB)
                 {
+                    var subTables = new Node("表", new ObservableCollection<Node>());
+                    subTables.Properties = node.Properties;
+                    subTables.CfgPath = node.CfgPath;
+                    subTables.ConnectString = node.ConnectString;
+                    subTables.Connection = node.Connection;
+                    subTables.DataAdapter = node.DataAdapter;
+                    subTables.NodeType = NodeEnum.Tables;
+                    node.SubNodes.Add(subTables);
+                    //
+                   var subOther = new Node("函数", new ObservableCollection<Node>());
+                    subOther.Properties = node.Properties;
+                    subOther.CfgPath = node.CfgPath;
+                    subOther.ConnectString = node.ConnectString;
+                    subOther.Connection = node.Connection;
+                    subOther.DataAdapter = node.DataAdapter;
+                    subOther.NodeType = NodeEnum.Functions;
+                    node.SubNodes.Add(subOther);
+                    //
+                    subOther = new Node("视图", new ObservableCollection<Node>());
+                    subOther.Properties = node.Properties;
+                    subOther.CfgPath = node.CfgPath;
+                    subOther.ConnectString = node.ConnectString;
+                    subOther.Connection = node.Connection;
+                    subOther.DataAdapter = node.DataAdapter;
+                    subOther.NodeType = NodeEnum.Views;
+                    node.SubNodes.Add(subOther);
+                    //
+                    subOther = new Node("查询", new ObservableCollection<Node>());
+                    subOther.Properties = node.Properties;
+                    subOther.CfgPath = node.CfgPath;
+                    subOther.ConnectString = node.ConnectString;
+                    subOther.Connection = node.Connection;
+                    subOther.DataAdapter = node.DataAdapter;
+                    subOther.NodeType = NodeEnum.QurySqls;
+                    node.SubNodes.Add(subOther);
+
                     string query = "";
                     if (node.Properties.TryGetValue("alltables", out query))
                     {
+                        node.Connection.ChangeDatabase(node.Title);
                         node.DataAdapter.SelectCommand = node.Connection.CreateCommand();
                         node.DataAdapter.SelectCommand.CommandText = query;
+                       
                         var ds = new DataSet();
                         node.DataAdapter.Fill(ds);
 
@@ -157,13 +216,13 @@ namespace AvaDB.Views
                             sub.Connection = node.Connection;
                             sub.DataAdapter = node.DataAdapter;
                             sub.NodeType=NodeEnum.Table;
-                            node.SubNodes.Add(sub);
+                            subTables.SubNodes.Add(sub);
                         }
-                        var tree = sender as TreeView;
-                      //  treeView.ExpandSubTree((TreeViewItem)tree.SelectedItem);
+                        
+                     
                     }
                 }
-                else
+                else if(node.NodeType==NodeEnum.Table) 
                 {
                     node.DataAdapter.SelectCommand = node.Connection.CreateCommand();
                     node.DataAdapter.SelectCommand.CommandText = "select * from "+node.Title;
@@ -172,8 +231,6 @@ namespace AvaDB.Views
                     QueryTable itemtable = new QueryTable();
                     var table = new DataTableModel();
                     itemtable.DataContext= table;
-                    //itemtable.grdData.ItemsSource = ds.Tables[0].Rows;
-                   // table.Data.AddRange(ds.Tables[0].Rows.Cast<DataRow>());
                     var tabItem = new TabItem() { Header =node.Title };
                     tabItem.Content = itemtable;
                     tabQuery.Items.Add(tabItem);
@@ -219,9 +276,28 @@ namespace AvaDB.Views
                 DesignTable designTable = new DesignTable();
                 designTable.DataContext = tailModel;
                 tabQuery.Items.Add(new TabItem() {  Content = designTable, Header="设计"+node.Title });
-            //    var tree = sender as TreeView;
-                //  treeView.ExpandSubTree((TreeViewItem)tree.SelectedItem);
+            
             }
+        }
+
+        private void MenuItem_Click_Open(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+        }
+
+        private void MenuItem_Click_Create(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var menu = e.Source as MenuItem;
+            var node = menu.DataContext as Node;
+            DesignTable designTable = new DesignTable() { Connection = node.Connection };
+            TableTailModel tailModel = new TableTailModel();
+            designTable.DataContext = tailModel;
+            tabQuery.Items.Add(new TabItem() { Content = designTable, Header = "设计" + node.Title });
+            designTable.CreateTableHandler += DesignTable_CreateTableHandler;
+        }
+
+        private void DesignTable_CreateTableHandler(string obj)
+        {
+           
         }
     }
 }

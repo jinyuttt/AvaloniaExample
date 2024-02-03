@@ -42,7 +42,6 @@ namespace AvaDB.Views
                 txtName.Text = "mysql";
                 txtUser.Text = "jinyu";
                 txtPsw.Text = "";
-
             }
         }
         private HikariConfig GetConnect(string type)
@@ -73,13 +72,13 @@ namespace AvaDB.Views
                 {
                     db.Open();
                 }
-                var result = MessageBoxManager.GetMessageBoxStandard("提示", "连接成功？",
+                var result = MessageBoxManager.GetMessageBoxStandard("提示", "连接成功",
                  ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Info).ShowWindowDialogAsync(this);
             
             }
             catch (Exception ex)
             {
-                var result = MessageBoxManager.GetMessageBoxStandard("提示", "连接失败？",
+                var result = MessageBoxManager.GetMessageBoxStandard("提示", "连接失败",
                    ButtonEnum.Ok,MsBox.Avalonia.Enums.Icon.Info).ShowWindowDialogAsync(this);
              
             }

@@ -3,7 +3,7 @@ using Test.Views;
 
 namespace Test.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    internal class ActionTabViewModal
     {
         public ObservableCollection<ActionTabItem> Tabs { get; set; }
 
@@ -15,9 +15,9 @@ namespace Test.ViewModels
         public void Populate()
         {
             // Add A tab to TabControl With a specific header and Content(UserControl)
-            Tabs.Add(new ActionTabItem { Header = "UserControl 1", Content = new TabClose() });
+            Tabs.Add(new ActionTabItem { Header = "UserControl 1", Content = new TestUserControl() });
             // Add A tab to TabControl With a specific header and Content(UserControl)
-            Tabs.Add(new ActionTabItem { Header = "UserControl 2", Content = new TabClose() });
+            Tabs.Add(new ActionTabItem { Header = "UserControl 2", Content = new TestUserControl() });
         }
     }
 }
