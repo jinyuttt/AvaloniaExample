@@ -16,7 +16,7 @@ namespace AvaDB
 
         public static event EventHandler<Dialog> DialogClosed;
 
-        public static void Show(DialogType type, string content, int height = 100, int width = 200, int timing = 0)
+        public static void Show(DialogType type, string content,Object context, int height = 100, int width = 200, int timing = 0)
         {
             Dialog dialog;
             // 防止并发可自行修改
@@ -37,10 +37,15 @@ namespace AvaDB
                 {
                     Height = height,
                     Width = width,
-                    DataContext = new AvaDB.ViewModels.DBViewModel(),
+                    DataContext = new ViewModels.DBViewModel(),
                     DBType = content,
                     WindowStartupLocation = WindowStartupLocation.Manual // 不设置的话无法修改窗口位置
                 };
+                if(context != null )
+                {
+                    dialog.DataContext = context;
+                }
+               
                 dialog.Closed += (s, e) =>
                 {
                    if(DialogClosed != null)

@@ -11,6 +11,8 @@ using System.Collections.ObjectModel;
 using System.IO;
 using AvaDB.Tools;
 using DynamicData;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AvaDB.Views
 {
@@ -28,28 +30,48 @@ namespace AvaDB.Views
             
         }
 
-        void load(ObservableCollection<Node> nodes)
+        async void Load(ObservableCollection<Node> nodes)
         {
            string path= Path.Combine(Path.GetTempPath(),mydir, filejon); 
-           var vfg= Util.JsonFileDeserialize<ObservableCollection<Node>>(path);
-            if (vfg.Result!= null)
+           var vfg=await Util.JsonFileDeserialize<ObservableCollection<Node>>(path);
+            if (vfg!= null)
             {
-                nodes.AddRange(vfg.Result);
+                nodes.AddRange(vfg);
             }
         }
 
-        void save(ObservableCollection<Node> nodes)
+        async void Save(ObservableCollection<Node> nodes)
         {
             string path = Path.Combine(Path.GetTempPath(),mydir, filejon);
-             Util.JsonFileSerializeAsync<ObservableCollection<Node>>(nodes,path);
+          await  Util.JsonFileSerializeAsync<ObservableCollection<Node>>(nodes, path);
            
+        }
+        async Task<bool> Delete(ObservableCollection<Node> nodes,Node node)
+        {
+            if (!nodes.Remove(node))
+            {
+                
+                foreach (Node node2 in nodes)
+                {
+                    if (node2.SubNodes != null)
+                    {
+                       var ret= await Delete(node2.SubNodes, node);
+                        if(ret)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            return true;
+
         }
 
         private void MainWindow_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             ObservableCollection<Node> nodes=  treeView.ItemsSource as ObservableCollection<Node>;
             nodes.Clear();
-            load(nodes);
+            Load(nodes);
         }
 
         private void TitleBar_OnPointerMouseHander(object? sender, PointerPressedEventArgs e)
@@ -69,12 +91,12 @@ namespace AvaDB.Views
         private void OpenDB(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             // 弹窗新窗口
-             var item=  sender as MenuItem;
+            var item=  sender as MenuItem;
             if (item != null)
             {
                 DialogManager.DialogClosed += DialogManager_DialogClosed;
             }
-            DialogManager.Show((DialogType)1, item==null?"no":item.Header.ToString(),400,600);
+            DialogManager.Show((DialogType)1, item==null?"no":item.Header.ToString(),null,300,600);
 
            
         }
@@ -93,11 +115,17 @@ namespace AvaDB.Views
                     node.Connection = dBView.DbConnection;
                     node.Properties = dBView.Properties;
                     node.CfgPath = dBView.CfgPath;
+                    node.Host = dBView.Host;
+                    node.Port = dBView.Port;
+                    node.User = dBView.User;
+                    node.Password = dBView.Password;
+                    node.IsCheck=dBView.IsCheck;
                     model.Nodes.Add(node);
-                    save(model.Nodes);
+                    Save(model.Nodes);
 
                 }
             }
+            DialogManager.DialogClosed -= DialogManager_DialogClosed;
         }
 
         private void TreeView_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e)
@@ -129,7 +157,7 @@ namespace AvaDB.Views
                         }
                         catch (Exception ex)
                         {
-                            var result = MessageBoxManager.GetMessageBoxStandard("提示", "连接失败？",
+                            var result = MessageBoxManager.GetMessageBoxStandard("提示", "连接失败!",
                                ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Info).ShowWindowDialogAsync(this);
                             return;
 
@@ -298,6 +326,46 @@ namespace AvaDB.Views
         private void DesignTable_CreateTableHandler(string obj)
         {
            
+        }
+
+        private void MenuItem_Click_Delete(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var menu = e.Source as MenuItem;
+            var node = menu.DataContext as Node;
+            ObservableCollection<Node> nodes = treeView.ItemsSource as ObservableCollection<Node>;
+            if(nodes!=null)
+            {
+                Delete(nodes, node);
+            }
+            Save(nodes);
+        }
+
+        private void MenuItem_Click_Edit(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var menu = e.Source as MenuItem;
+            var node = menu.DataContext as Node;
+            var item = sender as MenuItem;
+            if (item != null)
+            {
+                DialogManager.DialogClosed += DialogManager_DialogClosed;
+            }
+            DBViewModel dBViewModel = new DBViewModel()
+            {
+                CfgPath = node.CfgPath,
+                 ConnectString= node.ConnectString,
+                  DbConnection=node.Connection,
+                   Description = node.Description,
+                    Host= node.Host,
+                     Name=node.Title,
+                      IsCheck = node.IsCheck,
+                       Port = node.Port,
+                        Password= node.Password,
+                         Properties = node.Properties,
+                          User= node.User,
+                          
+
+            };
+            DialogManager.Show((DialogType)1, item == null ? "no" : item.Header.ToString(),dBViewModel, 300, 600);
         }
     }
 }

@@ -111,27 +111,12 @@
                       BorderBrush="Gray" BorderThickness="1"
                       CornerRadius="5" Padding="15 3">
                 <TextBlock Text="{Binding Title}" >
-                 
-                  <TextBlock.ContextMenu>
-                    <ContextMenu Name="nodeCon" IsVisible="{Binding ConMenuIsVisiblity}">
-                      <MenuItem Header="关闭连接" Click="MenuItem_Click_Table"/>
-                      <MenuItem Header="编辑连接" Click="MenuItem_Click_Table"/>
-                      <MenuItem Header="删除连接" Click="MenuItem_Click_Open"/>
-                    </ContextMenu>
-                  </TextBlock.ContextMenu>
-                  <TextBlock.ContextMenu>
-                    <ContextMenu Name="nodeDB" IsVisible="{Binding DBMenuIsVisiblity}">
-                      <MenuItem Header="运行SQL" Click="MenuItem_Click_Table"/>
-                      <MenuItem Header="存储SQL" Click="MenuItem_Click_Table"/>
-                      <MenuItem Header="新建查询" Click="MenuItem_Click_Open"/>
-                    </ContextMenu>
-                  </TextBlock.ContextMenu>
                   <TextBlock.ContextMenu>
                     <ContextMenu IsVisible="true">
                       <MenuItem Header="关闭连接"  IsVisible="{Binding ConMenuIsVisiblity}" Click="MenuItem_Click_Table"/>
-                      
-                      <MenuItem Header="编辑连接" IsVisible="{Binding ConMenuIsVisiblity}" Click="MenuItem_Click_Table"/>
-                      <MenuItem Header="删除连接" IsVisible="{Binding ConMenuIsVisiblity}" Click="MenuItem_Click_Open"/>
+      
+                      <MenuItem Header="编辑连接" IsVisible="{Binding ConMenuIsVisiblity}" Click="MenuItem_Click_Edit"/>
+                      <MenuItem Header="删除连接" IsVisible="{Binding ConMenuIsVisiblity}"  Click="MenuItem_Click_Delete"/>
                       <MenuItem Header="打开表" IsVisible="{Binding OtherMenuIsVisiblity}" Click="MenuItem_Click_Open"/>
                       <MenuItem Header="设计表" IsVisible="{Binding OtherMenuIsVisiblity}" Click="MenuItem_Click_Table"/>
                       <MenuItem Header="新建表" Click="MenuItem_Click_Create"/>
