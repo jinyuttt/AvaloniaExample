@@ -40,13 +40,16 @@
                   <Button  Name="PART_TextPresenter"                   
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                           Content="X"
+                           Content="X" Height="8"
                       />
                 </Grid>
               </Grid>
             </Border>
           </ControlTemplate>
         </Setter.Value>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+          <Setter Property="BorderBrush" Value="Red" />
+        </Style>
       </Setter>
     </Style>
 </Styles>

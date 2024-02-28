@@ -30,14 +30,14 @@ namespace MapsuiAvalonia.Views
 
             var osmAttribution = new Attribution("© OpenStreetMap contributors", "https://www.openstreetmap.org/copyright");
             //  var osmSource = new HttpClientTileSource(httpClient, new GlobalSphericalMercator(), "http://online{s}.map.bdimg.com/onlinelabel/?qt=tile&x={x}&y={y}&z={z}&styles=pl&udt=20141103&scaler=1", new[] { "a", "b", "c" }, name: "OpenStreetMap", attribution: osmAttribution);
-
-            string url = "http://online3.map.bdimg.com/onlinelabel/?qt=tile&x=1&y=1&z=3&styles=pl&udt=20200727&scaler=1&p=1";
+            string url = "http://wprd01.is.autonavi.com/appmaptile?x={0}&y={1}&z={2}&lang=zh_cn&size=1&scl=1&style=8";
+           // string url = "http://online3.map.bdimg.com/onlinelabel/?qt=tile&x={0}&y={1}&z={2}&styles=pl&udt=20200727&scaler=1&p=1";
             var osmSource = new HttpClientTileSource(httpClient, new GlobalSphericalMercator(), url);
             var osmLayer = new TileLayer(osmSource) { Name = "百度地图" };
-          
+         
             
-            Map.Map.Widgets.Enqueue(new ScaleBarWidget(Map.Map) { TextAlignment = Mapsui.Widgets.Alignment.Center, HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Center, VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Top });
-           Map.Map.Widgets.Enqueue(new Mapsui.Widgets.Zoom.ZoomInOutWidget { MarginX = 20, MarginY = 40 });
+           // Map.Map.Widgets.Enqueue(new ScaleBarWidget(Map.Map) { TextAlignment = Mapsui.Widgets.Alignment.Center, HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Center, VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Top });
+        //   Map.Map.Widgets.Enqueue(new Mapsui.Widgets.Zoom.ZoomInOutWidget { MarginX = 20, MarginY = 40 });
 
          
             Map.Map.Layers.Add(osmLayer);

@@ -31,7 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatRender.Avalonia", "Chat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaDB", "AvaDB\AvaDB.csproj", "{1D4995D3-0B3F-4D34-A95F-0388F621EBC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAvalonia", "TestAvalonia\TestAvalonia.csproj", "{76B40186-063C-4F56-89CE-6692F53D6CF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAvalonia", "TestAvalonia\TestAvalonia.csproj", "{76B40186-063C-4F56-89CE-6692F53D6CF0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BubbleAvalonia", "BubbleAvalonia\BubbleAvalonia.csproj", "{A56043FF-31F9-4BBF-8ECA-71912A5A710B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageAvalonia", "ImageAvalonia\ImageAvalonia.csproj", "{D583FD69-1F0D-443D-A69F-9800E73F7E5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +103,14 @@ Global
 		{76B40186-063C-4F56-89CE-6692F53D6CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76B40186-063C-4F56-89CE-6692F53D6CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76B40186-063C-4F56-89CE-6692F53D6CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A56043FF-31F9-4BBF-8ECA-71912A5A710B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A56043FF-31F9-4BBF-8ECA-71912A5A710B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A56043FF-31F9-4BBF-8ECA-71912A5A710B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A56043FF-31F9-4BBF-8ECA-71912A5A710B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D583FD69-1F0D-443D-A69F-9800E73F7E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D583FD69-1F0D-443D-A69F-9800E73F7E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D583FD69-1F0D-443D-A69F-9800E73F7E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D583FD69-1F0D-443D-A69F-9800E73F7E5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

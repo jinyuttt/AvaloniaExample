@@ -136,9 +136,24 @@
         </TreeView>
         <GridSplitter Grid.Column="1" Background="LightGray" ResizeDirection="Columns"/>
         
-          <TabControl  Grid.Column="2" Name="tabQuery" Background="Transparent">
+         <!-- <TabControl  Grid.Column="2" Name="tabQuery" Background="Transparent">
            
-          </TabControl>
+          </TabControl>-->
+      <TabControl ItemsSource="{Binding Items}"  SelectedItem="{Binding SelectItem}" Grid.Column="2" Name="tabQuery" Background="Transparent">
+          <TabControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:TabItemModel">
+              <StackPanel Orientation="Horizontal">
+                <TextBlock MinWidth="50" Text="{Binding Description}"  VerticalAlignment="Stretch"/>
+                <Button Command="{Binding Close}"   Content="x" VerticalContentAlignment="Top" FontSize="10" BorderBrush="Red"/>
+              </StackPanel>
+            </DataTemplate>
+          </TabControl.ItemTemplate>
+          <TabControl.ContentTemplate>
+            <DataTemplate x:DataType="vm:TabItemModel">
+              <ContentControl Content="{Binding Content}" />
+            </DataTemplate>
+          </TabControl.ContentTemplate>
+        </TabControl>
        
         <GridSplitter Grid.Column="3" Background="LightGray" ResizeDirection="Columns"/>
         <TextBlock Grid.Column="4" Background="Transparent"/>

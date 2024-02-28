@@ -1,9 +1,22 @@
-﻿namespace TestAvalonia.ViewModels
+﻿using Avalonia.Controls;
+using ReactiveUI;
+
+namespace TestAvalonia.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-#pragma warning disable CA1822 // Mark members as static
-        public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
+        private string _output = "Waiting...";
+        private object view = null;
+        public object ContenView
+        {
+            get => view;
+            set => this.RaiseAndSetIfChanged(ref view, value);
+        }
+
+        public string? Title
+        {
+            get => _output;
+            set => this.RaiseAndSetIfChanged(ref _output, value);
+        }
     }
 }

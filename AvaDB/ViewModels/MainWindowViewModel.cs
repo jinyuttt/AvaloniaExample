@@ -10,6 +10,9 @@ namespace AvaDB.ViewModels
     {
         public ObservableCollection<Node> Nodes { get; }
         public ObservableCollection<Node> SelectedNodes { get; }
+        public ObservableCollection<TabItemModel> Items { get; }
+
+        public TabItemModel SelectItem { get; set; }
         private Window hostWindow;
          public ReactiveCommand<Unit, Unit> QuitProgramCommand { get; }
 
@@ -26,8 +29,10 @@ namespace AvaDB.ViewModels
 
             QuitProgramCommand = ReactiveCommand.Create(() => { hostWindow.Close(); });
 
+            Items = new ObservableCollection<TabItemModel>();
             SelectedNodes = new ObservableCollection<Node>();
             Nodes = new ObservableCollection<Node>
+
             {
                 new Node("Animals", new ObservableCollection<Node>
                 {

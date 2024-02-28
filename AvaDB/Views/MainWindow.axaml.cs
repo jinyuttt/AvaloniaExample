@@ -13,6 +13,8 @@ using AvaDB.Tools;
 using DynamicData;
 using System.Linq;
 using System.Threading.Tasks;
+using Org.BouncyCastle.Utilities;
+using ReactiveUI;
 
 namespace AvaDB.Views
 {
@@ -138,8 +140,9 @@ namespace AvaDB.Views
                    if(node.Connection == null)
                     {
                         Hikari.HikariConfig config=new Hikari.HikariConfig();
-                        config.ConnectString=node.ConnectString;
                         config.LoadConfig(node.CfgPath);
+                        config.ConnectString=node.ConnectString;
+                       
                        
                         HikariDataSource dataSource=new HikariDataSource(config);
                       
@@ -181,6 +184,7 @@ namespace AvaDB.Views
                             sub.Connection=node.Connection;
                             sub.DataAdapter = node.DataAdapter;
                             sub.NodeType = NodeEnum.DB;
+                           
                             node.SubNodes.Add(sub);
                         }
 
@@ -259,10 +263,21 @@ namespace AvaDB.Views
                     QueryTable itemtable = new QueryTable();
                     var table = new DataTableModel();
                     itemtable.DataContext= table;
-                    var tabItem = new TabItem() { Header =node.Title };
-                    tabItem.Content = itemtable;
-                    tabQuery.Items.Add(tabItem);
-                    itemtable.BindDataTable(ds.Tables[0]);
+                   // var tabItem = new TabItem() { Header =node.Title };
+                   // tabItem.Content = itemtable;
+                  //  tabQuery.Items.Add(tabItem);
+                    MainWindowViewModel model=this.DataContext as MainWindowViewModel;
+                   var lst= model.Items.Where(X => X.Name == node.Name).ToList();
+                    if (lst.Count > 0)
+                    {
+                        model.SelectItem = lst[0];
+                        tabQuery.SelectedItem = lst[0];
+                    }
+                    else
+                    {
+                        model.Items.Add(new TabItemModel(model.Items) { Description = node.Title, Content = itemtable, Name=node.Name});
+                        itemtable.BindDataTable(ds.Tables[0]);
+                    }
                 }
             }
         }
@@ -319,7 +334,9 @@ namespace AvaDB.Views
             DesignTable designTable = new DesignTable() { Connection = node.Connection };
             TableTailModel tailModel = new TableTailModel();
             designTable.DataContext = tailModel;
-            tabQuery.Items.Add(new TabItem() { Content = designTable, Header = "设计" + node.Title });
+            //  tabQuery.Items.Add(new TabItem() { Content = designTable, Header = "设计" + node.Title });
+            MainWindowViewModel model = this.DataContext as MainWindowViewModel;
+            model.Items.Add(new TabItemModel(model.Items) { Description = "设计" + node.Title, Content = designTable });
             designTable.CreateTableHandler += DesignTable_CreateTableHandler;
         }
 

@@ -1,4 +1,5 @@
 ﻿using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -9,6 +10,8 @@ namespace AvaDB.ViewModels
     public class Node
     {
         public ObservableCollection<Node>? SubNodes { get; }
+
+        public string Name { get; }
 
         /// <summary>
         /// 名称
@@ -93,17 +96,21 @@ namespace AvaDB.ViewModels
 
         public Node()
         {
-            
+            SubNodes = new ObservableCollection<Node>();
+            Name=Guid.NewGuid().ToString();
         }
         public Node(string title)
         {
             Title = title;
+            SubNodes = new ObservableCollection<Node>();
+            Name = Guid.NewGuid().ToString();
         }
 
         public Node(string title, ObservableCollection<Node> subNodes)
         {
             Title = title;
             SubNodes = subNodes;
+            Name = Guid.NewGuid().ToString();
         }
     }
 }
