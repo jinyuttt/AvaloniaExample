@@ -13,7 +13,7 @@ namespace CefAvalonia.Views
             WebView webview = new() { Focusable = true };
             Content = webview;
 
-            webview.BrowserCreated += (s, e) => webview.Navigate("https://www.baidu.com");
+            webview.BrowserCreated += (s, e) => webview.Navigate("https://www.bydauto.com.cn/pc/home?type=dynasty&networkType=dynasty");
 
             webview.DocumentTitleChanged += (s, e) => Title = e.Title;
 

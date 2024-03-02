@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BubbleAvalonia", "BubbleAva
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageAvalonia", "ImageAvalonia\ImageAvalonia.csproj", "{D583FD69-1F0D-443D-A69F-9800E73F7E5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGlAvalonia", "OpenGlAvalonia\OpenGlAvalonia.csproj", "{C0E8839C-6BC6-416B-8D53-587BDFD8C0A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenGlAvalonia", "OpenGlAvalonia\OpenGlAvalonia.csproj", "{C0E8839C-6BC6-416B-8D53-587BDFD8C0A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GaugeAvalonia", "GaugeAvalonia\GaugeAvalonia.csproj", "{38802D77-E0ED-4244-9C84-A5E4B70C2AE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,6 +119,10 @@ Global
 		{C0E8839C-6BC6-416B-8D53-587BDFD8C0A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0E8839C-6BC6-416B-8D53-587BDFD8C0A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0E8839C-6BC6-416B-8D53-587BDFD8C0A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38802D77-E0ED-4244-9C84-A5E4B70C2AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38802D77-E0ED-4244-9C84-A5E4B70C2AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38802D77-E0ED-4244-9C84-A5E4B70C2AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38802D77-E0ED-4244-9C84-A5E4B70C2AE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
