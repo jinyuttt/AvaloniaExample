@@ -1,26 +1,28 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  xmlns:ctrl="us">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="clr-namespace:GaugeAvalonia.Views;assembly=GaugeAvalonia"
+    x:CompileBindings="False"
+  >
   <Design.PreviewWith>
         <Border Padding="20">
             <!-- Add Controls for Previewer Here -->
         </Border>
     </Design.PreviewWith>
 
-  <Style TargetType="{x:Type ctrl:ArcGauge}">
+  <Style  Selector="local|ArcGauge">
     <Setter Property="Background" Value="#646464"/>
     <Setter Property="Foreground" Value="Black"/>
     <Setter Property="Template">
       <Setter.Value>
-        <ControlTemplate TargetType="{x:Type ctrl:ArcGauge}">
+        <ControlTemplate TargetType="{x:Type local:ArcGauge}">
           <Border Margin="10">
-            <Grid Width="{Binding RelativeSource={RelativeSource Self},Path=ActualHeight}">
+            <Grid Width="{Binding RelativeSource={RelativeSource Self},Path=Height}">
               <Ellipse Fill="#FF3B3B3B"/>
               <Grid RenderTransformOrigin="0.5,0.5" Margin="2">
                 <Grid.RenderTransform>
                   <TransformGroup>
-                    <RotateTransform Angle="{Binding Path=Angle,ElementName=PointRotate}"/>
-                  </TransformGroup>
+                    <RotateTransform  Angle="{Binding Angle}"/>
+                    </TransformGroup>
                 </Grid.RenderTransform>
                 <Ellipse Width="16" Height="14" Fill="Orange" VerticalAlignment="Top" >
                   <Ellipse.Effect>
@@ -57,17 +59,17 @@
                     <RowDefinition/>
                     <RowDefinition/>
                   </Grid.RowDefinitions>
-                  <Path Data="M5,0 5,0 10,120 0,120z" Fill="#0FA9CE" Stretch="Uniform" Margin="0 30 0 0" RenderTransformOrigin="0.5,1" HorizontalAlignment="Center">
+                  <Path  Data="M5,0 5,0 10,120 0,120z" Fill="#0FA9CE" Stretch="Uniform" Margin="0 30 0 0"  HorizontalAlignment="Center">
                     <Path.RenderTransform>
                       <TransformGroup>
-                        <RotateTransform x:Name="PointRotate"/>
+                        <RotateTransform    Angle="{Binding Path=Angle, Mode=TwoWay}"/>
                       </TransformGroup>
                     </Path.RenderTransform>
                   </Path>
                 </Grid>
                 <Ellipse Width="28" Height="28" Fill="Black">
                   <Ellipse.Effect>
-                    <DropShadowEffect Color="#0FA9CE" ShadowDepth="0" Direction="0" BlurRadius="16"/>
+                  <!--<DropShadowEffect Color="#0FA9CE" ShadowDepth="0" Direction="0" BlurRadius="16"/>-->
                   </Ellipse.Effect>
                 </Ellipse>
                 <Border VerticalAlignment="Bottom" BorderBrush="#10ABD1" BorderThickness="2" Margin="0 0 0 12" Background="Black" Padding="8 2" HorizontalAlignment="Center">
