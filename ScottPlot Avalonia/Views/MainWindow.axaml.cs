@@ -16,7 +16,7 @@ namespace ScottPlot_Avalonia.Views
            AvaPlot avaPlot1 = this.Find<AvaPlot>("AvaPlot1");
             
             avaPlot1.Plot.Add.Signal(dataY);
-            avaPlot1.Plot.SetAxisLimits(0, 30, 0, 30);
+          //  avaPlot1.Plot.SetAxisLimits(0, 30, 0, 30);
           
         }
     }
