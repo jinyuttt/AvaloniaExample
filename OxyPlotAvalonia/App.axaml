@@ -11,7 +11,7 @@
   
     <Application.Styles>
         <FluentTheme />
-      <StyleInclude Source="avares://OxyPlot.Avalonia/Themes/Default.axaml"/>
+      <StyleInclude Source="avares://OxyPlot.AvaloniaCore/Themes/Default.axaml"/>
      
     </Application.Styles>
 </Application>

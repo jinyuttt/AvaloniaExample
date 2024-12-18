@@ -14,7 +14,8 @@ namespace OxyPlotAvalonia
         public static void Main(string[] args)
         {
 
-        OxyPlotModule.EnsureLoaded(); BuildAvaloniaApp()
+        OxyPlotModule.EnsureLoaded();
+            BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args); }
 
         // Avalonia configuration, don't remove; also used by visual designer.
